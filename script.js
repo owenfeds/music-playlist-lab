@@ -10,27 +10,26 @@
 
 // TODO: Create an array with at least 5 song titles (strings)
 // MDN Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
-let mySongs = [
+let mySongs = ["Guilt Trip", "Reservoir", "Mabu", "Never Try", "Yukon"];
     // Add your favorite song titles here as strings
     // Example: "Song Title"
-];
 
 // TODO: Create an array with at least 5 artist names
-let myArtists = [
+let myArtists = ["Pup", "Black Sabbath", "Iron Maiden", "Megadeth", "Pink Floyd"];
     // Add artist names here as strings
     // Example: "Artist Name"
-];
 
 // TODO: Create an array with music genres
-let genres = [
+let genres = ["Punk", "Metal", "Psychedelic", "Rock"];
     // Add music genres here as strings
     // Example: "Rock", "Pop", "Jazz"
-];
 
 // TODO: Create an empty array for favorite songs (this should start empty)
 let favorites = [
-    // This should start empty - you'll add to it later!
+
 ];
+    // This should start empty - you'll add to it later!
+
 
 // ===========================================
 // STEP 2: ARRAY ACCESS
@@ -40,15 +39,17 @@ let favorites = [
 function displaySelectedSongs() {
     // TODO: Get the first song from mySongs (index 0)
     // MDN Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#accessing_array_elements
-    let firstSong = // Your code here
+    let firstSong = mySongs[0];
+    // Your code here
 
     // TODO: Get the last song from mySongs
     // HINT: Use mySongs.length - 1 for the last index
-    let lastSong = // Your code here
+    let lastSong = mySongs[mySongs.length - 1];
+    console.log(lastSong);// Your code here
 
     // TODO: Get the middle song from mySongs
     // HINT: Use Math.floor(mySongs.length / 2) for middle index
-    let middleSong = // Your code here
+    let middleSong =  Math.floor(mySongs.length / 2);// Your code here
 
     // DOM operations handled for you - focus on the array logic above
     document.getElementById('first-song').textContent = firstSong;
@@ -66,16 +67,16 @@ function displaySelectedSongs() {
 function showMusicStats() {
     // TODO: Count songs using .length property
     // MDN Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length
-    let songCount = // Your code here - use mySongs.length
+    let songCount = mySongs.length;// Your code here - use mySongs.length
 
     // TODO: Count artists using .length property
-    let artistCount = // Your code here - use myArtists.length
+    let artistCount =  myArtists.length;// Your code here - use myArtists.length
 
     // TODO: Count genres using .length property
-    let genreCount = // Your code here - use genres.length
+    let genreCount = genres.length; // Your code here - use genres.length
 
     // TODO: Count favorites using .length property
-    let favoritesCount = // Your code here - use favorites.length
+    let favoritesCount = favorites.length;// Your code here - use favorites.length
 
     // Check if arrays are properly filled
     if (mySongs.length === 0) {
@@ -106,6 +107,8 @@ function showMusicStats() {
 
 // TODO: Complete this function to add a song to the end
 function addSongToEnd() {
+
+    mySongs.push("Dark Days");
     // TODO: Use .push() method to add "New Song" to mySongs
     // MDN Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
     // Your code here - use mySongs.push("New Song")
@@ -122,6 +125,8 @@ function addSongToEnd() {
 
 // TODO: Complete this function to add a song to the beginning
 function addSongToBeginning() {
+
+    mySongs.unshift("Lionheart");
     // TODO: Use .unshift() method to add "First Song" to mySongs
     // MDN Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift
     // Your code here - use mySongs.unshift("First Song")
@@ -146,8 +151,8 @@ function addRandomToFavorites() {
 
     // TODO: Pick a random song from mySongs
     // HINT: Use Math.floor(Math.random() * mySongs.length)
-    let randomIndex = // Your code here
-    let randomSong = // Your code here - use mySongs[randomIndex]
+    let randomIndex = Math.floor(Math.random() * mySongs.length);// Your code here
+    let randomSong = mySongs[randomIndex];// Your code here - use mySongs[randomIndex]
 
     // TODO: Add it to favorites using .push()
     // Your code here - use favorites.push(randomSong)
@@ -171,7 +176,7 @@ function removeLastSong() {
 
     // TODO: Use .pop() to remove and get the last song
     // MDN Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop
-    let removedSong = // Your code here - use mySongs.pop()
+    let removedSong = mySongs.pop();// Your code here - use mySongs.pop()
 
     // DOM operations handled for you - focus on the array logic above
     updateDisplays();
@@ -188,7 +193,7 @@ function removeFirstSong() {
 
     // TODO: Use .shift() to remove and get the first song
     // MDN Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift
-    let removedSong = // Your code here - use mySongs.shift()
+    let removedSong = mySongs.shift();// Your code here - use mySongs.shift()
 
     // DOM operations handled for you - focus on the array logic above
     updateDisplays();
@@ -206,13 +211,18 @@ function displayAllSongsForEach() {
     if (mySongs.length === 0) {
         showMessage("❌ Step 1 incomplete: Please add songs to mySongs array first");
         return;
+    songsHTML += "<div class='song-item'>" + (index + 1) + ". " + song + "</div>"; 
     }
 
     let songsHTML = "<h3>All Songs (using .forEach):</h3>";
 
     // TODO: Use .forEach() method to go through all songs
     // MDN Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+    mySongs.forEach((value, index) => {
+    console.log(`${index}: ${value}`);
+});
     // Your code here - use mySongs.forEach(function(song, index) { ... })
+
 
     // Inside the forEach function, add each song to songsHTML like this:
     // songsHTML += "<div class='song-item'>" + (index + 1) + ". " + song + "</div>";
@@ -232,7 +242,9 @@ function createFormattedSongList() {
 
     // TODO: Use .map() method to create an array of formatted strings
     // MDN Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
-    let formattedSongs = // Your code here - use mySongs.map(function(song, index) { ... })
+    let formattedSongs = mySongs.map(Math.sqrt(song, index) {
+    return (index + 1) + ". " + song + " ♫";
+}// Your code here - use mySongs.map(function(song, index) { ... })
 
     // Inside the map function, return a formatted string like:
     // return (index + 1) + ". " + song + " ♫";
@@ -240,6 +252,9 @@ function createFormattedSongList() {
     let songsHTML = "<h3>Formatted Songs (using .map):</h3>";
 
     // TODO: Use .forEach() to display the formatted songs array
+    formattedSongs.forEach(function(formattedSong) {
+        songsHTML += "<div class='song-item'>" + formattedSong + "</div>";
+    })
     // Your code here - use formattedSongs.forEach(function(formattedSong) { ... })
 
     // Inside the forEach, add to songsHTML like:
@@ -272,7 +287,7 @@ function searchForSong() {
 
     // TODO: Use .indexOf() to find the song
     // MDN Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
-    let position = // Your code here - use mySongs.indexOf(searchTerm)
+    let position = mySongs.indexOf("mabu");// Your code here - use mySongs.indexOf(searchTerm)
 
     // TODO: Check if song was found and show appropriate message
     // HINT: indexOf returns -1 if not found, or the index if found
@@ -300,7 +315,7 @@ function checkIfSongExists() {
 
     // TODO: Use .includes() to check if song exists
     // MDN Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
-    let exists = // Your code here - use mySongs.includes(searchTerm)
+    let exists = mySongs.includes("Guilt Trip", "Reservoir", "Mabu", "Never Try", "Yukon", "lionheart", "Dark Days");// Your code here - use mySongs.includes(searchTerm)
 
     // TODO: Show appropriate message
     if (exists) {
@@ -330,7 +345,7 @@ function getTopThreeSongs() {
     // TODO: Use destructuring to get first three songs
     // MDN Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#array_destructuring
     // HINT: let [first, second, third] = mySongs;
-    let [first, second, third] = // Your code here
+    let [first, second, third] = mySongs;// Your code here
 
     showMessage("✅ Top 3 songs using destructuring: 1) " + first + " 2) " + second + " 3) " + third);
 }
@@ -344,7 +359,7 @@ function separateFirstSong() {
 
     // TODO: Use destructuring to get first song and rest
     // HINT: let [first, ...others] = mySongs;
-    let [first, ...others] = // Your code here
+    let [first, ...others] = mySongs;// Your code here
 
     showMessage("✅ First song: '" + first + "', Other songs: " + others.length + " using destructuring!");
 }
